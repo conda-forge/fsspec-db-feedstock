@@ -11,7 +11,7 @@ source:
   sha256: bdff4710e855b07d1edd53cdd4ab05ae1e58c8ae8453ecdfcc2888d04963e505
 
 build:
-  number: 0
+  number: 1
   python:
     version_independent: true
   script:
@@ -50,9 +50,6 @@ requirements:
     - fsspec
     - fsspec-rs >=0.1.2
     - pyarrow
-  ignore_run_exports:
-    from_package:
-      - cross-python_${{ target_platform }}
 
 tests:
   - python:
