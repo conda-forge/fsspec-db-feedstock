@@ -1,6 +1,6 @@
 context:
   name: fsspec-db
-  version: "0.3.2"
+  version: "0.4.0"
 
 package:
   name: ${{ name }}
@@ -8,10 +8,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/f/fsspec-db/fsspec_db-${{ version }}.tar.gz
-  sha256: bdff4710e855b07d1edd53cdd4ab05ae1e58c8ae8453ecdfcc2888d04963e505
+  sha256: fb84a4c27e4ceb6872f250ce832cd915edf3340618bfa5d59eceee3483b2c335
 
 build:
-  number: 1
+  number: 0
   python:
     version_independent: true
   script:
@@ -41,14 +41,15 @@ requirements:
     - python
     - pip
     - hatchling
-    - hatch-rs >=0.2.1
+    - hatch-rs >=0.6.0
+    - fsspec-rs >=0.2.1,<0.3
     - if: is_abi3
       then:
         - python-abi3
   run:
     - python
     - fsspec
-    - fsspec-rs >=0.1.2
+    - fsspec-rs >=0.2.1,<0.3
     - pyarrow
 
 tests:
@@ -63,10 +64,8 @@ tests:
     then:
       script:
         - if: win
-          then: abi3audit %PREFIX%/Lib/site-packages/fsspec_db/fsspec_db.pyd -s -v --assume-minimum-abi3 ${{ python_min }}
-          else:
-            - export SP_DIR=$(python -c "import site; print(site.getsitepackages()[0])")
-            - abi3audit $SP_DIR/fsspec_db/fsspec_db.abi3.so -s -v --assume-minimum-abi3 ${{ python_min }}
+          then: abi3audit %SP_DIR%\fsspec_db\fsspec_db.pyd -s -v --assume-minimum-abi3 ${{ python_min }}
+          else: abi3audit $SP_DIR/fsspec_db/fsspec_db.abi3.so -s -v --assume-minimum-abi3 ${{ python_min }}
       requirements:
         run:
           - abi3audit
