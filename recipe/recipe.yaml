@@ -1,6 +1,6 @@
 context:
   name: fsspec-db
-  version: "0.4.0"
+  version: "0.4.1"
 
 package:
   name: ${{ name }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/f/fsspec-db/fsspec_db-${{ version }}.tar.gz
-  sha256: fb84a4c27e4ceb6872f250ce832cd915edf3340618bfa5d59eceee3483b2c335
+  sha256: 9358b957f71fbcb86d2980a0aa33ebf3df1b0dc35173cccd61288f15300bbb18
 
 build:
   number: 0
