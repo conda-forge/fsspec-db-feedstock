@@ -1,6 +1,6 @@
 context:
   name: fsspec-db
-  version: "0.4.1"
+  version: "0.5.0"
 
 package:
   name: ${{ name }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/f/fsspec-db/fsspec_db-${{ version }}.tar.gz
-  sha256: 9358b957f71fbcb86d2980a0aa33ebf3df1b0dc35173cccd61288f15300bbb18
+  sha256: a9c2c680f7d683810a92742e5893bcbc293f9f3c54597654aca5b0bbf111ae8f
 
 build:
   number: 0
@@ -41,7 +41,7 @@ requirements:
     - python
     - pip
     - hatchling
-    - hatch-rs >=0.6.0
+    - hatch-rs >=0.6.1
     - fsspec-rs >=0.2.1,<0.3
     - if: is_abi3
       then:
@@ -49,6 +49,7 @@ requirements:
   run:
     - python
     - fsspec
+    - fsspec-data >=0.7.0,<0.8
     - fsspec-rs >=0.2.1,<0.3
     - pyarrow
 
